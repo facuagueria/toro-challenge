@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pizzas\PizzaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -24,4 +25,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+Route::group(['prefix' => 'pizzas'], function () {
+    Route::get('/', [PizzaController::class, 'index'])->name('pizzas.index');
+    Route::get('/create', [PizzaController::class, 'create'])->name('pizzas.create');
+    Route::post('/', [PizzaController::class, 'store'])->name('pizzas.store');
+    Route::get('/{pizza}/edit', [PizzaController::class, 'edit'])->name('pizzas.edit');
+    Route::put('/{pizza}', [PizzaController::class, 'update'])->name('pizzas.update');
+    Route::delete('/{pizza}', [PizzaController::class, 'destroy'])->name('pizzas.destroy');
+});
+
+require __DIR__ . '/auth.php';
