@@ -19,13 +19,21 @@ import {
 import { Button } from '@/Components/ui/button'
 import { EllipsisVertical } from 'lucide-vue-next'
 import {Pizza} from "@/types/Pizza";
-import {Link} from "@inertiajs/vue3";
+import {Link, router} from "@inertiajs/vue3";
 
 interface Props {
     pizzas: Pizza[];
 }
 
 const props = defineProps<Props>()
+
+const editPizza = (id: number) => {
+    router.get(`/pizzas/${id}/edit`)
+}
+
+const deletePizza = (id: number) => {
+    router.delete(`/pizzas/${id}`)
+}
 </script>
 
 <template>
@@ -56,8 +64,8 @@ const props = defineProps<Props>()
                             <EllipsisVertical />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
-                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                            <DropdownMenuItem>Delete</DropdownMenuItem>
+                            <DropdownMenuItem @click="editPizza(pizza.id)">Edit {{pizza.id}}</DropdownMenuItem>
+                            <DropdownMenuItem @click="deletePizza(pizza.id)">Delete</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
                 </TableCell>
