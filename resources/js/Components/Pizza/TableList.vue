@@ -64,7 +64,7 @@ const deletePizza = (id: number) => {
                             <EllipsisVertical />
                         </DropdownMenuTrigger>
                         <DropdownMenuContent>
-                            <DropdownMenuItem @click="editPizza(pizza.id)">Edit {{pizza.id}}</DropdownMenuItem>
+                            <DropdownMenuItem @click="editPizza(pizza.id)">Edit</DropdownMenuItem>
                             <DropdownMenuItem @click="deletePizza(pizza.id)">Delete</DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>
