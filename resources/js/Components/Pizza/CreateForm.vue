@@ -3,7 +3,7 @@ import {Trash2} from 'lucide-vue-next';
 import {useForm} from 'vee-validate'
 import {toTypedSchema} from '@vee-validate/zod'
 import * as z from 'zod'
-import {router} from '@inertiajs/vue3'
+import {Link, router} from '@inertiajs/vue3'
 
 import {
     FormControl,
@@ -148,7 +148,9 @@ watch(pizzaIngredients.value, () => {
         <span v-if="pizzaIngredients.length">Total: <b>{{ totalIngredients.toFixed(2) }} eur</b></span>
 
         <div v-if="pizzaIngredients.length" class="flex flex-row  gap-3 max-w-[300px] pt-10">
-            <Button class="" type="submit" variant="outline">Cancel</Button>
+            <Link :href="route('pizzas.index')">
+                <Button type="button" variant="outline">Cancel</Button>
+            </Link>
             <Button class="max-w-[300px]" type="submit">Create Pizza</Button>
         </div>
     </form>
