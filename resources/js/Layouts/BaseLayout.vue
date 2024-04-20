@@ -2,11 +2,12 @@
 import {Menu} from 'lucide-vue-next'
 import {Button} from '@/Components/ui/button'
 import {Sheet, SheetContent, SheetTrigger} from '@/Components/ui/sheet'
-import { Link } from '@inertiajs/vue3';
+import {Link} from '@inertiajs/vue3';
+import Toaster from '@/Components/ui/toast/Toaster.vue'
 </script>
 
 <template>
-
+    <Toaster/>
     <div class="grid min-h-screen w-full md:grid-cols-[220px_1fr] lg:grid-cols-[280px_1fr]">
         <div class="hidden border-r bg-muted/40 md:block">
             <div class="flex h-full max-h-screen flex-col gap-2">
@@ -17,13 +18,6 @@ import { Link } from '@inertiajs/vue3';
                 </div>
                 <div class="flex-1">
                     <nav class="grid items-start px-2 text-sm font-medium lg:px-4">
-<!--                        <a-->
-<!--                            href="/"-->
-<!--                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"-->
-<!--                        >-->
-<!--                            Dashboard-->
-<!--                        </a>-->
-
                         <Link
                             :href="route('pizzas.index')"
                             class="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
@@ -63,22 +57,6 @@ import { Link } from '@inertiajs/vue3';
                             >
                                 <span class="">Pizza Lovers</span>
                             </a>
-                            <a
-                                href="#"
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
-                            >
-                                Dashboard
-                            </a>
-<!--                            <a-->
-<!--                                href="#"-->
-<!--                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl bg-muted px-3 py-2 text-foreground hover:text-foreground"-->
-<!--                            >-->
-<!--                                <ShoppingCart class="h-5 w-5"/>-->
-<!--                                Orders-->
-<!--                                <Badge class="ml-auto flex h-6 w-6 shrink-0 items-center justify-center rounded-full">-->
-<!--                                    6-->
-<!--                                </Badge>-->
-<!--                            </a>-->
                             <Link
                                 :href="route('pizzas.index')"
                                 class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
