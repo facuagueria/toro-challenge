@@ -37,6 +37,16 @@ class PizzaService
         return $pizza;
     }
 
+    public function update(array $data, $id)
+    {
+        $pizza = $this->pizzaRepository->update($data, $id);
+
+        $pizza->ingredients()->sync($data['ingredients']);
+
+        return $pizza;
+
+    }
+
     public function delete($id)
     {
         return $this->pizzaRepository->delete($id);

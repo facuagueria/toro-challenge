@@ -24,7 +24,11 @@ class PizzaRepository implements PizzaRepositoryInterface
 
     public function update(array $data, $id)
     {
-        // TODO: Implement update() method.
+        $pizza = $this->findById($id);
+
+        $pizza->update($data);
+
+        return $pizza;
     }
 
     public function delete($id)

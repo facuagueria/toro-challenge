@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pizzas;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePizzaRequest;
+use App\Http\Requests\UpdatePizzaRequest;
 use App\Services\IngredientService;
 use App\Services\PizzaService;
 use Illuminate\Support\Facades\DB;
@@ -52,6 +53,20 @@ class PizzaController extends Controller
         try {
             DB::beginTransaction();
             $this->pizzaService->create($request->validated());
+
+            DB::commit();
+            return redirect()->route('pizzas.index');
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            return back()->with('error', $exception);
+        }
+    }
+
+    public function update(UpdatePizzaRequest $request, $id)
+    {
+        try {
+            DB::beginTransaction();
+            $this->pizzaService->update($request->validated(), $id);
 
             DB::commit();
             return redirect()->route('pizzas.index');
