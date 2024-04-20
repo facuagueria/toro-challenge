@@ -3,6 +3,9 @@ import {useForm} from 'vee-validate'
 import {toTypedSchema} from '@vee-validate/zod'
 import * as z from 'zod'
 import {router, Link} from '@inertiajs/vue3'
+import {useToast} from '@/Components/ui/toast/use-toast'
+
+const {toast} = useToast()
 
 import {
     FormControl,
@@ -53,6 +56,11 @@ const totalIngredients = ref<number>(0)
 const pizzaIngredients = ref<Ingredient[]>(props.pizza.ingredients)
 const addIngredient = (ingredient: string) => {
     if (pizzaIngredients.value.find((i) => i.name === ingredient)) {
+        toast({
+            variant: 'destructive',
+            title: 'Ingredient already added',
+        });
+
         return
     }
 
