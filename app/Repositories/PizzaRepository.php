@@ -14,12 +14,12 @@ class PizzaRepository implements PizzaRepositoryInterface
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        return Pizza::query()->find($id);
     }
 
     public function create(array $data)
     {
-        // TODO: Implement create() method.
+        return Pizza::create($data);
     }
 
     public function update(array $data, $id)
@@ -29,6 +29,10 @@ class PizzaRepository implements PizzaRepositoryInterface
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $pizza = $this->findById($id);
+
+        $pizza->ingredients()->detach();
+
+        return $pizza->delete();
     }
 }
