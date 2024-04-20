@@ -14,21 +14,23 @@ class IngredientRepository implements IngredientRepositoryInterface
 
     public function findById($id)
     {
-        // TODO: Implement findById() method.
+        return Ingredient::findOrFail($id);
     }
 
     public function create(array $data)
     {
-        // TODO: Implement create() method.
+        Ingredient::create($data);
     }
 
     public function update(array $data, $id)
     {
-        // TODO: Implement update() method.
+        $ingredient = $this->findById($id);
+        $ingredient->update($data);
     }
 
     public function delete($id)
     {
-        // TODO: Implement delete() method.
+        $ingredient = $this->findById($id);
+        $ingredient->delete();
     }
 }
