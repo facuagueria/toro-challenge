@@ -1,18 +1,8 @@
 <script setup lang="ts">
-import {Bell, CircleUser, Home, LineChart, Menu, Package, Package2, Search, ShoppingCart, Users} from 'lucide-vue-next'
-
-import {Badge} from '@/Components/ui/badge'
+import {Menu} from 'lucide-vue-next'
 import {Button} from '@/Components/ui/button'
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuLabel,
-    DropdownMenuSeparator,
-    DropdownMenuTrigger
-} from '@/Components/ui/dropdown-menu'
-import {Input} from '@/Components/ui/input'
 import {Sheet, SheetContent, SheetTrigger} from '@/Components/ui/sheet'
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -34,18 +24,18 @@ import {Sheet, SheetContent, SheetTrigger} from '@/Components/ui/sheet'
 <!--                            Dashboard-->
 <!--                        </a>-->
 
-                        <a
-                            href="#"
+                        <Link
+                            :href="route('pizzas.index')"
                             class="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
                         >
                             Pizzas
-                        </a>
-                        <a
-                            href="#"
+                        </Link>
+                        <Link
+                            :href="route('ingredients.index')"
                             class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
                         >
                             Ingredients
-                        </a>
+                        </Link>
 
                     </nav>
                 </div>
@@ -89,18 +79,18 @@ import {Sheet, SheetContent, SheetTrigger} from '@/Components/ui/sheet'
 <!--                                    6-->
 <!--                                </Badge>-->
 <!--                            </a>-->
-                            <a
-                                href="#"
+                            <Link
+                                :href="route('pizzas.index')"
                                 class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                             >
                                 Pizzas
-                            </a>
-                            <a
-                                href="#"
+                            </Link>
+                            <Link
+                                :href="route('ingredients.index')"
                                 class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                             >
                                 Ingredients
-                            </a>
+                            </Link>
 
                         </nav>
 
