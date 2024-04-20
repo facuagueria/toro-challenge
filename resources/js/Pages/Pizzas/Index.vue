@@ -1,13 +1,20 @@
 <script setup lang="ts">
-const props = defineProps<{
-    pizzas: []
-}>()
+import {Pizza} from "@/types/Pizza";
+import BaseLayout from "@/Layouts/BaseLayout.vue";
+import EmptyCatalog from "@/Components/Pizza/EmptyCatalog.vue";
+import TableList from "@/Components/Pizza/TableList.vue";
+
+interface Props {
+    pizzas: Pizza[];
+}
+
+defineProps<Props>()
 </script>
 
 <template>
-    {{ pizzas }}
+    <BaseLayout>
+        <template v-slot:title>Pizzas</template>
+        <EmptyCatalog v-if="!pizzas.length"/>
+        <TableList v-else :pizzas="pizzas" />
+    </BaseLayout>
 </template>
-
-<style scoped>
-
-</style>
