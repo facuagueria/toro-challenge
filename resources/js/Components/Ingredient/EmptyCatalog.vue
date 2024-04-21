@@ -1,6 +1,6 @@
 <script setup lang="ts">
-
 import {Button} from "@/Components/ui/button";
+import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
@@ -9,9 +9,11 @@ import {Button} from "@/Components/ui/button";
             <h3 class="text-2xl font-bold tracking-tight">
                 You have no Ingredients
             </h3>
-            <Button class="mt-4">
-                Add Ingredients
-            </Button>
+            <Link :href="route('ingredients.create')">
+                <Button class="mt-4">
+                    Create
+                </Button>
+            </Link>
         </div>
     </div>
 </template>
