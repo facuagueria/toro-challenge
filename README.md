@@ -20,8 +20,13 @@ cp .env.example .env
 ```bash
 php artisan key:generate
 ```
+5. Create sqlite database
 
-5. Run migrations
+```bash
+touch database/database.sqlite
+```
+
+6. Run migrations
     
 ```bash
 php artisan migrate
