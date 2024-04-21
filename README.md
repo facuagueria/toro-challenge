@@ -1,3 +1,15 @@
+# Pizza Lovers (Toro-Challenge)
+
+## Description
+This project is a simple web application that allows users to create, edit, and delete pizzas and ingredients.
+
+## Technologies
+- Laravel 11
+- Vue 3
+- Components from Shadcn/vue (https://www.shadcn-vue.com/)
+- Tailwind CSS
+- SQLite
+
 ## Configuring the project
 1. Clone repository
 2. Install dependencies 
@@ -31,6 +43,8 @@ touch database/database.sqlite
 ```bash
 php artisan migrate
 ```
+
+Database starts empty, after running the app, you can create ingredients and pizzas.
 
 ## Running the project
 
