@@ -44,4 +44,4 @@ Route::group(['prefix' => 'ingredients'], function () {
     Route::delete('/{ingredient}', [IngredientController::class, 'destroy'])->name('ingredients.destroy');
 });
 
-require __DIR__ . '/auth.php';
+//require __DIR__ . '/auth.php';
