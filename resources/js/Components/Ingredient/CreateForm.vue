@@ -14,6 +14,14 @@ import {
 } from '@/Components/ui/form'
 import {Input} from "@/Components/ui/input";
 import {Button} from "@/Components/ui/button";
+import {watch} from "vue";
+import {useToast} from '@/Components/ui/toast/use-toast'
+
+const {toast} = useToast()
+
+const props = defineProps<{
+    errors?: Record<string, string>
+}>()
 
 const formSchema = toTypedSchema(z.object({
     name: z.string().min(2).max(50),
@@ -26,6 +34,18 @@ const form = useForm({
 
 const onSubmit = form.handleSubmit((values) => {
     router.post('/ingredients', values)
+})
+
+watch(() => props.errors, (errors) => {
+    if (errors) {
+        Object.keys(errors).forEach((key) => {
+            toast({
+                title: key,
+                description: errors[key],
+                variant: 'destructive'
+            })
+        })
+    }
 })
 </script>
 

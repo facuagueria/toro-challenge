@@ -15,9 +15,14 @@ import {
 import {Input} from "@/Components/ui/input";
 import {Button} from "@/Components/ui/button";
 import {Ingredient} from "@/types/Ingredient";
+import {watch} from "vue";
+import {useToast} from '@/Components/ui/toast/use-toast'
+
+const {toast} = useToast()
 
 const props = defineProps<{
     ingredient: Ingredient
+    errors?: Record<string, string>
 }>()
 
 const formSchema = toTypedSchema(z.object({
@@ -41,6 +46,18 @@ const onSubmit = form.handleSubmit((values) => {
     }
 
     router.put(`/ingredients/${props.ingredient.id}`, fields)
+})
+
+watch(() => props.errors, (errors) => {
+    if (errors) {
+        Object.keys(errors).forEach((key) => {
+            toast({
+                title: key,
+                description: errors[key],
+                variant: 'destructive'
+            })
+        })
+    }
 })
 </script>
 
