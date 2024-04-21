@@ -27,6 +27,7 @@ import {ref, watch} from "vue";
 const props = defineProps<{
     pizza: Pizza & { ingredients: Ingredient[] },
     ingredients: Ingredient[]
+    errors?: Record<string, string>
 }>()
 
 const formSchema = toTypedSchema(z.object({
@@ -38,7 +39,7 @@ const form = useForm({
     validationSchema: formSchema,
     initialValues: {
         name: props.pizza.name,
-    }
+    },
 })
 
 const onSubmit = form.handleSubmit((values) => {
@@ -84,6 +85,18 @@ watch(pizzaIngredients.value, () => {
 
     totalIngredients.value = totalIngredients.value + (totalIngredients.value * 0.5)
 }, {immediate: true})
+
+watch(() => props.errors, (errors) => {
+    if (errors) {
+        Object.keys(errors).forEach((key) => {
+            toast({
+                title: key,
+                description: errors[key],
+                variant: 'destructive'
+            })
+        })
+    }
+})
 </script>
 
 <template>

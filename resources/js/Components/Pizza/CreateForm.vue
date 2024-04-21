@@ -39,6 +39,7 @@ import {ref, watch} from "vue";
 
 interface Props {
     ingredients: Ingredient[];
+    errors?: Record<string, string>
 }
 
 const props = defineProps<Props>()
@@ -92,6 +93,18 @@ watch(pizzaIngredients.value, () => {
     }, 0)
 
     totalIngredients.value = totalIngredients.value + (totalIngredients.value * 0.5)
+})
+
+watch(() => props.errors, (errors) => {
+    if (errors) {
+        Object.keys(errors).forEach((key) => {
+            toast({
+                title: key,
+                description: errors[key],
+                variant: 'destructive'
+            })
+        })
+    }
 })
 </script>
 

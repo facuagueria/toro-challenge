@@ -5,7 +5,7 @@ import EditForm from "@/Components/Pizza/EditForm.vue";
 import {Pizza} from "@/types/Pizza";
 
 defineProps<{
-    pizza: Pizza
+    pizza: Pizza & { ingredients: Ingredient[] },
     ingredients: Ingredient[]
 }>()
 </script>

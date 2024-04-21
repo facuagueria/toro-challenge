@@ -5,6 +5,7 @@ import CreateForm from "@/Components/Pizza/CreateForm.vue";
 
 interface Props {
     ingredients: Ingredient[];
+    errors?: Record<string, string>
 }
 
 defineProps<Props>()
@@ -13,6 +14,6 @@ defineProps<Props>()
 <template>
     <BaseLayout>
         <template v-slot:title>Create your own Pizza</template>
-        <CreateForm :ingredients="ingredients"/>
+        <CreateForm :ingredients="ingredients" :errors="errors"/>
     </BaseLayout>
 </template>
