@@ -32,7 +32,8 @@ const props = defineProps<{
 
 const formSchema = toTypedSchema(z.object({
     name: z.string().min(2).max(50),
-    cost_price: z.any()
+    cost_price: z.any(),
+    ingredient: z.any()
 }))
 
 const form = useForm({
@@ -56,6 +57,12 @@ const onSubmit = form.handleSubmit((values) => {
 const totalIngredients = ref<number>(0)
 const pizzaIngredients = ref<Ingredient[]>(props.pizza.ingredients)
 const addIngredient = (ingredient: string) => {
+    if (!ingredient) {
+        form.setFieldError('ingredient', 'Ingredient is required')
+        return
+    }
+
+
     if (pizzaIngredients.value.find((i) => i.name === ingredient)) {
         toast({
             variant: 'destructive',
