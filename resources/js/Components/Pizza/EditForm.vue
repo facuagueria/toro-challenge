@@ -159,7 +159,7 @@ watch(() => props.errors, (errors) => {
                     <TableCell class="font-medium">
                         {{ ingredient.name }}
                     </TableCell>
-                    <TableCell>{{ ingredient.cost_price }}</TableCell>
+                    <TableCell>{{ ingredient.cost_price }} eur</TableCell>
                     <TableCell>
                         <Button variant="ghost">
                             <Trash2 class="h-5" @click="removeFromPizzaIngredients(ingredient.id)"/>
