@@ -20,13 +20,15 @@ import Toaster from '@/Components/ui/toast/Toaster.vue'
                     <nav class="grid items-start px-2 text-sm font-medium lg:px-4">
                         <Link
                             :href="route('pizzas.index')"
-                            class="flex items-center gap-3 rounded-lg bg-muted px-3 py-2 text-primary transition-all hover:text-primary"
+                            class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                            :class="{ 'text-primary bg-muted': $page.url.startsWith('/pizzas') }"
                         >
                             Pizzas
                         </Link>
                         <Link
                             :href="route('ingredients.index')"
                             class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
+                            :class="{ 'text-primary bg-muted': $page.url.startsWith('/ingredients') }"
                         >
                             Ingredients
                         </Link>
@@ -59,13 +61,15 @@ import Toaster from '@/Components/ui/toast/Toaster.vue'
                             </a>
                             <Link
                                 :href="route('pizzas.index')"
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground"
+                                :class="{ 'text-primary bg-muted': $page.url.startsWith('/pizzas') }"
                             >
                                 Pizzas
                             </Link>
                             <Link
                                 :href="route('ingredients.index')"
-                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                                class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 hover:text-foreground"
+                                :class="{ 'text-primary bg-muted': $page.url.startsWith('/ingredients') }"
                             >
                                 Ingredients
                             </Link>
